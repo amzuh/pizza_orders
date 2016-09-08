@@ -1,5 +1,5 @@
 	// create the module and name it scotchApp
-	var App = angular.module('App', ['ngRoute']);
+	var App = angular.module('App', ['ngRoute', 'uiSwitch']);
 
 	// configure our routes
 	App.config(function($routeProvider, $locationProvider) {
@@ -33,6 +33,7 @@
 		$scope.message = 'Everyone come and see how good I look!';
 	});
 
+	// 1st step of Ordering 
 	App.controller('orderController', function($scope) {
 
 		$scope.data = {
@@ -46,7 +47,8 @@
 	    	selectedOption: {id: '1', name: 'Tomato Sauce'},
 	    	removeOption: {},
 	    	choosen: [],
-	    	size: {}
+	    	size: {},
+	    	cheeseRand: {}
 	  };
 
     $scope.addOption = function(){
