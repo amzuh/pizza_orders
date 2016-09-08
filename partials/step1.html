@@ -1,11 +1,31 @@
-<div class="jumbotron text-center">
-	<h1>Order Page</h1>
-	
-	<p>{{ message }}</p>
-	<form role="form" ng-submit='aboutController.submitForm(eventForm)' id="addEventForm" name="addEventForm" >
-	<input type="text"></input>
-	<input type="submit"></input>
-	</form>
+<div class="order-wrapper">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Order Page</h1>
+      <span>Choose Pizza size in cm</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <form name="order-form" ng-controller="orderController">
+        <div class="rounded" ng-click="addSize(20)"><span>20</span></div>
+        <div class="roundedx2" ng-click="addSize(30)"><span>30</span></div>
+        <div class="roundedx3" ng-click="addSize(40)"><span>40</span></div>
+
+        <label for="multipleSelect"> Single select: </label><br>
+        <select name="multipleSelect" ng-options="option.name for option in data.availableOptions track by option.id" ng-model="data.selectedOption">
+        </select>
+        <button class="btn" id="add-option" ng-click="addOption()">Add</button>
+        <br>
+        <div ng-repeat="choice in data.choosen track by $index">
+          <div class="ingredient">{{choice.name}}
+            <div ng-click="removeOption($index)">X</div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
 
 </div>  
 

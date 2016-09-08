@@ -14,7 +14,7 @@
 			// route for the about page
 			.when('/step', {
 				templateUrl : 'partials/step1.html',
-				controller  : 'aboutController'
+				controller  : 'orderController'
 			})
 
 			// route for the contact page
@@ -33,15 +33,40 @@
 		$scope.message = 'Everyone come and see how good I look!';
 	});
 
-	App.controller('aboutController', function($scope) {
-		$scope.message = 'Look! I am the order step 1.';
-		this.submitForm = function(form){
-			console.log(form);
-		}
-	});
+	App.controller('orderController', function($scope) {
 
-	App.controller('contactController', function($scope) {
-		$scope.message = 'Contact us! JK. This is just a demo.';
+		$scope.data = {
+			  availableOptions: [
+		      {id: '1', name: 'Tomato Sauce'},
+		      {id: '2', name: 'Mozarella'},
+		      {id: '3', name: 'Mushrooms'},
+		      {id: '4', name: 'Cheese'},
+		      {id: '5', name: 'Bacon'}
+	    	],
+	    	selectedOption: {id: '1', name: 'Tomato Sauce'},
+	    	removeOption: {},
+	    	choosen: [],
+	    	size: {}
+	  };
+
+    $scope.addOption = function(){
+    	$scope.data.choosen.push($scope.data.selectedOption);
+   		console.log($scope.data.choosen);
+    }
+
+    $scope.removeOption = function(idx){
+    	var index = $scope.data.choosen[idx];
+    	$scope.data.choosen.splice(idx, 1);
+    	console.log($scope.data.choosen);
+    }
+
+    $scope.addSize = function(size) {
+    	$scope.data.size = {size: size }
+    }
+
+
+
+
 	});
 
 

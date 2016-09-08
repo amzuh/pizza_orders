@@ -29,6 +29,14 @@ a:hover, a:visited, a:active, a:focus {
 	background-size: 100%;
 }
 
+.bg-img {
+  filter:alpha(opacity=70);
+  -moz-opacity:0.7;
+  -khtml-opacity: 0.7;
+  opacity: 0.7;
+  max-width: 100%;
+  position: absolute;
+}
 .navbar {
 	min-height: 100px;
 	display: flex;
@@ -146,4 +154,14 @@ a:hover, a:visited, a:active, a:focus {
 
 .footer-row .smaller {
 	font-size: 14px;
+}
+
+.mouse-ic {
+	padding-top: 20px;
+}
+
+/* Main loaded */
+
+#main {
+	position: relative;
 }
