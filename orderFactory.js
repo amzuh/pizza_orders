@@ -16,9 +16,7 @@
 	};
 
 	  orderService.addOption = function($scope){
-    	order.choosen.push($scope.data.selectedOption);
-   		console.log(order);
-   		alert("works");
+    	 this.order.choosen.push($scope);
     }
 
     orderService.removeOption = function(idx){

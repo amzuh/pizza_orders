@@ -11,15 +11,12 @@
           <li class="roundedx3" ng-class="class" ng-click="addSize(40);"><span>40</span></li>
         </ul>
           <label for="multipleSelect" class="label-ing"> Ingredients:  </label><br>
-          <select name="multipleSelect" ng-options="option.name for option in orderController.availableOptions track by option.id" ng-model="orderController.selectedOption">
+          <select name="multipleSelect" ng-options="option.name for option in data.availableOptions track by option.id" ng-model="data.selectedOption">
           </select>
-          {{orderController.selectedOption}}
-          {{orderController.data.selectedOption}}
-          {{order}}
-          {{orderService.order}}
+          {{orderService.availableOptions}}
           <div class="next-step" id="add-option" ng-click="addOption()"><img src="/assets/add_icon@2x.png" alt="add" width="20px"/></div>
           <br>
-          <div class="ing_wrapper" ng-repeat="choice in data.choosen track by $index">
+          <div class="ing_wrapper" ng-repeat="choice in orderService.order.choosen track by $index">
             <div class="ingredient">{{choice.name}}
               <div ng-click="removeOption($index)"><img src="/assets/cancel_small.png" alt="cancel"/></div>
             </div>

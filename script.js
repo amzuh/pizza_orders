@@ -32,9 +32,12 @@
 	});
 
 	// 1st step of Ordering 
-	App.controller('orderController', ['orderService', function(orderService) {
+	App.controller('orderController', ['$scope','orderService', function($scope, orderService) {
 		console.log("in controller");
-		this.data = {
+		var self = this;
+		var orderService = orderService.getOrder();
+
+		$scope.data = {
 			  availableOptions: [
 		      {id: '1', name: 'Tomato Sauce'},
 		      {id: '2', name: 'Mozarella'},
@@ -49,24 +52,25 @@
 	    	cheeseRand: {}
 	  };
 
-    this.addOption = function(){
-    	orderService.addOption(this.data.selectedOption);
-   		console.log(this.data.choosen);
+    $scope.addOption = function(){
+    	orderService.addOption($scope.data.selectedOption);
+    	console.log(orderService);
     }
 
-    this.removeOption = function(idx){
-    	var index = this.data.choosen[idx];
-    	this.data.choosen.splice(idx, 1);
+
+    $scope.removeOption = function(idx){
+    	var index = $scope.data.choosen[idx];
+    	$scope.data.choosen.splice(idx, 1);
     }
 
-    this.addSize = function(size) {
-    	this.data.size = {size: size }
+    $scope.addSize = function(size) {
+    	$scope.data.size = {size: size }
     }
 
 
 	}]);
 
 	App.controller('orderController2', function($scope) {
-		console.log("works");
+		console.log("here");
 	});
 
