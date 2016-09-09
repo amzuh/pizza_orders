@@ -1,5 +1,3 @@
-	// create the module and name it scotchApp
-	var App = angular.module('App', ['ngRoute', 'uiSwitch']);
 
 	// configure our routes
 	App.config(function($routeProvider, $locationProvider) {
@@ -18,9 +16,9 @@
 			})
 
 			// route for the contact page
-			.when('/contact', {
-				templateUrl : 'pages/contact.html',
-				controller  : 'contactController'
+			.when('/step2', {
+				templateUrl : 'partials/step2.html',
+				controller  : 'orderController2'
 			});
 
 		// html5 history api
@@ -34,9 +32,9 @@
 	});
 
 	// 1st step of Ordering 
-	App.controller('orderController', function($scope) {
-
-		$scope.data = {
+	App.controller('orderController', ['orderService', function(orderService) {
+		console.log("in controller");
+		this.data = {
 			  availableOptions: [
 		      {id: '1', name: 'Tomato Sauce'},
 		      {id: '2', name: 'Mozarella'},
@@ -51,24 +49,24 @@
 	    	cheeseRand: {}
 	  };
 
-    $scope.addOption = function(){
-    	$scope.data.choosen.push($scope.data.selectedOption);
-   		console.log($scope.data.choosen);
+    this.addOption = function(){
+    	orderService.addOption(this.data.selectedOption);
+   		console.log(this.data.choosen);
     }
 
-    $scope.removeOption = function(idx){
-    	var index = $scope.data.choosen[idx];
-    	$scope.data.choosen.splice(idx, 1);
-    	console.log($scope.data.choosen);
+    this.removeOption = function(idx){
+    	var index = this.data.choosen[idx];
+    	this.data.choosen.splice(idx, 1);
     }
 
-    $scope.addSize = function(size) {
-    	$scope.data.size = {size: size }
+    this.addSize = function(size) {
+    	this.data.size = {size: size }
     }
 
 
+	}]);
 
-
+	App.controller('orderController2', function($scope) {
+		console.log("works");
 	});
-
 

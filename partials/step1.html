@@ -1,33 +1,44 @@
 <div class="order-wrapper">
   <div class="row">
     <div class="col-xs-12">
-      <h1>Order Page</h1>
-      <span>Choose Pizza size in cm</span>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <form name="order-form" ng-controller="orderController">
-        <div class="rounded" ng-click="addSize(20)"><span>20</span></div>
-        <div class="roundedx2" ng-click="addSize(30)"><span>30</span></div>
-        <div class="roundedx3" ng-click="addSize(40)"><span>40</span></div>
-
-        <label for="multipleSelect"> Single select: </label><br>
-        <select name="multipleSelect" ng-options="option.name for option in data.availableOptions track by option.id" ng-model="data.selectedOption">
-        </select>
-        <button class="btn" id="add-option" ng-click="addOption()">Add</button>
-        <br>
-        <div ng-repeat="choice in data.choosen track by $index">
-          <div class="ingredient">{{choice.name}}
-            <div ng-click="removeOption($index)">X</div>
+      <div class="box text-center" id="step1-order">
+        <h2>Your Order</h2>
+        <h3>Choose Pizza Size in cm</h3>
+        <form name="order-form" id="order-form" ng-controller="orderController">
+        <ul id="pizSizes">
+          <li class="rounded" ng-class="class" ng-click="addSize(20);"><span>20</span></li>
+          <li class="roundedx2 active" ng-class="class" ng-click="addSize(30);"><span>30</span></li>
+          <li class="roundedx3" ng-class="class" ng-click="addSize(40);"><span>40</span></li>
+        </ul>
+          <label for="multipleSelect" class="label-ing"> Ingredients:  </label><br>
+          <select name="multipleSelect" ng-options="option.name for option in orderController.availableOptions track by option.id" ng-model="orderController.selectedOption">
+          </select>
+          {{orderController.selectedOption}}
+          {{orderController.data.selectedOption}}
+          {{order}}
+          {{orderService.order}}
+          <div class="next-step" id="add-option" ng-click="addOption()"><img src="/assets/add_icon@2x.png" alt="add" width="20px"/></div>
+          <br>
+          <div class="ing_wrapper" ng-repeat="choice in data.choosen track by $index">
+            <div class="ingredient">{{choice.name}}
+              <div ng-click="removeOption($index)"><img src="/assets/cancel_small.png" alt="cancel"/></div>
+            </div>
           </div>
-        </div>
-        <switch id="enable" name="cheeseRand" value="{{enable}}" ng-model="data.cheeseRand" class="green"></switch>
-        {{cheeseRand}}
-      </form>
+          <p class="label-ing cheese">Cheese Rand ?</p>
+          <switch id="enable" name="cheeseRand" value="{{enable}}" ng-model="data.cheeseRand" class="green"></switch>
+        </form>
+        <div class="red-btn smaller"><a ng-href="/step2" >Next <img src="/assets/next_icon@2x.png" alt="next-img" width="37px"/></a></div>
+      </div>
     </div>
   </div>
 
 
 </div>  
 
+<script>
+$("#pizSizes li").on("click", function(){
+  $("#pizSizes li").removeClass("active");
+  $(this).addClass("active");
+});
+
+</script>
