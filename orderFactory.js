@@ -1,5 +1,4 @@
  App.factory('orderService', function(){
-	console.log("in service");
 	var orderService = {
 		order : {	
 		 availableOptions: [
@@ -17,17 +16,17 @@
 
 	  orderService.addOption = function($scope){
     	 this.order.choosen.push($scope);
+    	 return orderService;
     }
 
     orderService.removeOption = function(idx){
-    	var index = $scope.data.choosen[idx];
-    	$scope.data.choosen.splice(idx, 1);
-    	console.log($scope.data.choosen);
-    	console.log($scope.data);
+    	var index = this.order.choosen[idx];
+    	this.order.choosen.splice(idx, 1);
+    	return orderService;
     }
 
     orderService.addSize = function(size) {
-    	$scope.data.size = {size: size }
+    	this.order.size = {size: size }
     }
 	
 

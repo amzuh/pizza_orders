@@ -13,7 +13,6 @@
           <label for="multipleSelect" class="label-ing"> Ingredients:  </label><br>
           <select name="multipleSelect" ng-options="option.name for option in data.availableOptions track by option.id" ng-model="data.selectedOption">
           </select>
-          {{orderService.availableOptions}}
           <div class="next-step" id="add-option" ng-click="addOption()"><img src="/assets/add_icon@2x.png" alt="add" width="20px"/></div>
           <br>
           <div class="ing_wrapper" ng-repeat="choice in orderService.order.choosen track by $index">
@@ -22,7 +21,7 @@
             </div>
           </div>
           <p class="label-ing cheese">Cheese Rand ?</p>
-          <switch id="enable" name="cheeseRand" value="{{enable}}" ng-model="data.cheeseRand" class="green"></switch>
+          <switch id="enable" name="cheeseRand" value="{{enable}}" ng-model="orderService.order.cheeseRand" class="green"></switch>
         </form>
         <div class="red-btn smaller"><a ng-href="/step2" >Next <img src="/assets/next_icon@2x.png" alt="next-img" width="37px"/></a></div>
       </div>

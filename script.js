@@ -1,5 +1,5 @@
 
-	// configure our routes
+	// configure routes
 	App.config(function($routeProvider, $locationProvider) {
 		$routeProvider
 
@@ -9,13 +9,13 @@
 				controller  : 'mainController'
 			})
 
-			// route for the about page
+			// route for the step1 page
 			.when('/step', {
 				templateUrl : 'partials/step1.html',
 				controller  : 'orderController'
 			})
 
-			// route for the contact page
+			// route for the step2 page
 			.when('/step2', {
 				templateUrl : 'partials/step2.html',
 				controller  : 'orderController2'
@@ -25,17 +25,16 @@
 		$locationProvider.html5Mode(true);
 	});
 
-	// create the controller and inject Angular's $scope
+
 	App.controller('mainController', function($scope) {
-		// create a message to display in our view
-		$scope.message = 'Everyone come and see how good I look!';
+		$scope.message = 'main';
 	});
 
 	// 1st step of Ordering 
 	App.controller('orderController', ['$scope','orderService', function($scope, orderService) {
-		console.log("in controller");
 		var self = this;
-		var orderService = orderService.getOrder();
+		$scope.orderService = orderService.getOrder();
+
 
 		$scope.data = {
 			  availableOptions: [
@@ -53,24 +52,21 @@
 	  };
 
     $scope.addOption = function(){
-    	orderService.addOption($scope.data.selectedOption);
-    	console.log(orderService);
+    	this.orderService.addOption($scope.data.selectedOption);
     }
 
 
     $scope.removeOption = function(idx){
-    	var index = $scope.data.choosen[idx];
-    	$scope.data.choosen.splice(idx, 1);
+    	this.orderService.removeOption(idx);
     }
 
     $scope.addSize = function(size) {
-    	$scope.data.size = {size: size }
+    	this.data.size = {size: size }
     }
-
 
 	}]);
 
 	App.controller('orderController2', function($scope) {
-		console.log("here");
+		console.log("controller ready");
 	});
 
