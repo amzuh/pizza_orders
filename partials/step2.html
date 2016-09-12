@@ -4,6 +4,20 @@
       <div class="box text-center" id="step1-order">
         <h2>Your Order</h2>
         <h3>Choose Pizza Size in cm</h3>
+
+        <form name="order-form-2" id="order-form-2" ng-controller="orderInfoController">
+          <label for="firstName" class="label-ing"> FIRST NAME </label>
+            <input name="firstName" type="text" ng-model="data.firstName"></input>
+          <label for="surname" class="label-ing"> SURNAME </label>
+            <input name="surname" type="text" ng-model="data.surname"></input>
+          <label for="street" class="label-ing"> STREET/NO  </label>
+            <input name="street" type="text" ng-model="data.street"></input>
+            <input name="streetno" type="text" ng-model="data.streetno"></input>
+          <label for="postcode" class="label-ing"> POSTCODE / CITY  </label>
+            <input name="postcode" type="text" ng-model="data.postcode"></input>
+            <input name="city" type="text" ng-model="data.city"></input>
+        </form>
+
         <div class="red-btn smaller"><a ng-href="/step">Back</a></div>
         <div class="red-btn smaller"><a ng-href="/step2" >Next <img src="/assets/next_icon@2x.png" alt="next-img" width="37px"/></a></div>
       </div>

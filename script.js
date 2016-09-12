@@ -19,15 +19,17 @@
 			.when('/step2', {
 				templateUrl : 'partials/step2.html',
 				controller  : 'orderInfoController'
-			});
+			})
+
+			.otherwise({redirectTo: 'pages/home.html'})
 
 		// html5 history api
 		$locationProvider.html5Mode(true);
 	});
 
 
-	App.controller('mainController', function($scope) {
-		$scope.message = 'main';
+	App.controller('mainController', function($scope, $location) {
+		var loc = $location.path();
 	});
 
 	// 1st step of Ordering 
@@ -88,4 +90,5 @@
 	App.controller('orderInfoController', function($scope) {
 		console.log("controller ready");
 	});
+
 
