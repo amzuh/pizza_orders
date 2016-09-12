@@ -18,7 +18,7 @@
 			// route for the step2 page
 			.when('/step2', {
 				templateUrl : 'partials/step2.html',
-				controller  : 'orderController2'
+				controller  : 'orderInfoController'
 			});
 
 		// html5 history api
@@ -34,7 +34,6 @@
 	App.controller('orderController', ['$scope','orderService', function($scope, orderService) {
 		var self = this;
 		$scope.orderService = orderService.getOrder();
-
 
 		$scope.data = {
 			  availableOptions: [
@@ -62,7 +61,6 @@
 
     $scope.addSize = function(size) {
     	this.orderService.addSize(size);
-    	console.log($scope.orderService.order);
     }
 
     $scope.getSize = function() {
@@ -73,11 +71,11 @@
     			break;
     		case 30:
     			var myEl = angular.element(document.querySelector('#rounded30'));
-    			myEle.addClass('active');
+    			myEl.addClass('active');
     			break;
     		case 40:
     			var myEl = angular.element(document.querySelector('#rounded40'));
-    			myEle.addClass('active');
+    			myEl.addClass('active');
     			break;
     		default:
     		  var myEl = angular.element(document.querySelector('#rounded30'));
@@ -87,7 +85,7 @@
 
 	}]);
 
-	App.controller('orderController2', function($scope) {
+	App.controller('orderInfoController', function($scope) {
 		console.log("controller ready");
 	});
 
