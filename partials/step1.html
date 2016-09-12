@@ -5,10 +5,10 @@
         <h2>Your Order</h2>
         <h3>Choose Pizza Size in cm</h3>
         <form name="order-form" id="order-form" ng-controller="orderController">
-        <ul id="pizSizes">
-          <li class="rounded" ng-class="class" ng-click="addSize(20);"><span>20</span></li>
-          <li class="roundedx2 active" ng-class="class" ng-click="addSize(30);"><span>30</span></li>
-          <li class="roundedx3" ng-class="class" ng-click="addSize(40);"><span>40</span></li>
+        <ul id="pizSizes" ng-init="getSize()">
+          <li class="rounded" id="rounded20" ng-class="class" ng-click="addSize(20);"><span>20</span></li>
+          <li class="roundedx2" id="rounded30" ng-class="class" ng-click="addSize(30);"><span>30</span></li>
+          <li class="roundedx3"  id="rounded40" ng-class="class" ng-click="addSize(40);"><span>40</span></li>
         </ul>
           <label for="multipleSelect" class="label-ing"> Ingredients:  </label><br>
           <select name="multipleSelect" ng-options="option.name for option in data.availableOptions track by option.id" ng-model="data.selectedOption">

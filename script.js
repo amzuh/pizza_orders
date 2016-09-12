@@ -61,8 +61,29 @@
     }
 
     $scope.addSize = function(size) {
-    	this.data.size = {size: size }
+    	this.orderService.addSize(size);
+    	console.log($scope.orderService.order);
     }
+
+    $scope.getSize = function() {
+    	switch($scope.orderService.order.size){
+    		case 20:
+    			var myEl = angular.element(document.querySelector('#rounded20'));
+    			myEl.addClass('active');
+    			break;
+    		case 30:
+    			var myEl = angular.element(document.querySelector('#rounded30'));
+    			myEle.addClass('active');
+    			break;
+    		case 40:
+    			var myEl = angular.element(document.querySelector('#rounded40'));
+    			myEle.addClass('active');
+    			break;
+    		default:
+    		  var myEl = angular.element(document.querySelector('#rounded30'));
+    			myEl.addClass('active');
+    	}	
+    };
 
 	}]);
 

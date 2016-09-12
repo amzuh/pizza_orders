@@ -26,7 +26,8 @@
     }
 
     orderService.addSize = function(size) {
-    	this.order.size = {size: size }
+    	this.order.size = size;
+    	return orderService;
     }
 	
 
