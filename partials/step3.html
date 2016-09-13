@@ -1,0 +1,17 @@
+<div class="order-wrapper">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box text-center" id="step1-order" ng-controller="orderConfirmController">
+        <h2>Delivery Address</h2>
+        {{pizza.order.choosen}}
+        {{client.order.firstName}}
+
+        <div class="red-btn smaller"><a ng-click="addInfo(orderServiceInfo)" ng-href="/step">Back</a></div>
+        <div class="red-btn smaller"><a ng-click="addInfo(orderServiceInfo)" >Next <img src="/assets/next_icon@2x.png" alt="next-img" width="37px"/></a></div>
+
+      </div>
+    </div>
+  </div>
+
+
+</div>  

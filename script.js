@@ -21,6 +21,11 @@
 				controller  : 'orderInfoController'
 			})
 
+			.when('/step3', {
+				templateUrl : 'partials/step3.html',
+				controller  : 'orderConfirmController'
+			})
+
 			.otherwise({redirectTo: 'pages/home.html'})
 
 		// html5 history api
@@ -87,8 +92,24 @@
 
 	}]);
 
-	App.controller('orderInfoController', function($scope) {
-		console.log("controller ready");
-	});
+	App.controller('orderInfoController', ['$scope', 'orderServiceInfo', function($scope, orderServiceInfo) {
+		$scope.orderServiceInfo = orderServiceInfo.getOrder();
+		
+		$scope.data = {};
+
+		$scope.addInfo = function(user){
+			$scope.data = angular.copy(user);
+			this.orderServiceInfo.addInfo($scope.data)
+		}
+
+	}]);
+
+	App.controller('orderConfirmController', ['$scope', 'orderServiceInfo', 'orderService', function($scope, orderServiceInfo, orderService) {
+	  $scope.pizza = orderService.getOrder();
+		$scope.client = orderServiceInfo.getOrder();
+
+		console.log("hey" + $scope.pizza);
+
+	}]);
 
 

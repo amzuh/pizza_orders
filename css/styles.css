@@ -307,3 +307,41 @@ a:hover, a:visited, a:active, a:focus {
 .ing_wrapper {
 	display: inline-block;
 }
+
+#order-form-2 {
+	max-width: 65%;
+    margin: 0 auto;
+}
+
+#order-form-2 label {
+	text-align: left;
+	width: 100%;
+}
+
+#order-form-2 input {
+	float: left;
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+#order-form-2 .label-half {
+	width: 75%;
+	display: inline-block;
+}
+
+#order-form-2 .label-half2 {
+    width: 22%;
+    display: inline-block;
+    margin-left: 2%;
+}
+
+#order-form-2 .label-postcode {
+	width:25%;
+	display: inline-block;
+}
+
+#order-form-2 .label-postcode2 {
+	width:72%;
+	margin-left:2%;
+	display: inline-block;
+}
